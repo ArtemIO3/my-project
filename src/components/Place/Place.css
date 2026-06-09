@@ -1,0 +1,139 @@
+.place-container {
+  padding: 20px;
+  font-family: sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Стили вкладок категорий */
+.categories-tabs {
+  display: flex;
+  gap: 30px; /* Немного увеличили расстояние между вкладками */
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #8E8E93; /* Красивый серый цвет для неактивных вкладок */
+  padding: 10px 5px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  position: relative;
+  border-bottom: 3px solid transparent; /* Заготовка под линию снизу */
+}
+
+/* Эффект при наведении */
+.tab-btn:hover {
+  color: #000000;
+}
+
+/* Активное состояние кнопки */
+.tab-btn.active {
+  color: #0056b3; /* Синий цвет как на вашем макете */
+  font-weight: bold;
+  border-bottom: 3px solid #0056b3;
+}
+
+/* Контейнер для иконки внутри кнопки */
+.tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Настройка SVG, чтобы он наследовал цвет шрифта родителя */
+/* Настройка SVG, чтобы он наследовал цвет шрифта родителя */
+.tab-icon svg {
+  width: 60px;  
+  height: 40px; 
+  transition: transform 0.2s ease;
+  fill: currentColor; 
+ stroke: currentColor; 
+}
+
+
+.tab-btn:hover .tab-icon svg {
+  transform: scale(1.05); /* Легкий интерактивный эффект при наведении */
+}
+
+/* Сетка карточек */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Стили карточки */
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-wrapper {
+  position: relative;
+  height: 160px;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.view-more-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.card-info {
+  padding: 15px;
+  background: #d0daf8; 
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.card-main h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+
+.bedrooms {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.rating-badge {
+  background: #0056b3;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.card-price {
+  font-weight: bold;
+  font-size: 18px;
+}

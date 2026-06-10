@@ -57,7 +57,7 @@
   height: 40px; 
   transition: transform 0.2s ease;
   fill: currentColor; 
- stroke: currentColor; 
+   stroke: currentColor; 
 }
 
 

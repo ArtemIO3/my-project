@@ -55,7 +55,7 @@ const placesData = {
   ],
 };
 
-const categories = [
+const oldCategories = [
   {
     id: "beach",
     icon: (
@@ -106,6 +106,93 @@ const categories = [
   ),
   },
 ];
+
+const BeachIcon = ({ active = false }) => (
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+    {active ? (
+      <>
+        <path d="M12 36c7-12 21-17 38-15C40 12 25 11 15 21c11-4 22-2 35 0" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M29 24 19 51" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+        <path d="M8 48c5 3 9 3 14 0 5-3 9-3 14 0 5 3 9 3 14 0" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+      </>
+    ) : (
+      <>
+        <path d="M14 34c7-10 20-15 36-13C40 14 26 14 16 22" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M29 24 20 50" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        <path d="M8 48c5 3 9 3 14 0 5-3 9-3 14 0 5 3 9 3 14 0" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      </>
+    )}
+  </svg>
+);
+
+const PoolsIcon = ({ active = false }) => (
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+    <path d="M10 45c5 4 9 4 14 0s9-4 14 0 9 4 16 0" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} strokeLinecap="round" />
+    <path d="M10 53c5 4 9 4 14 0s9-4 14 0 9 4 16 0" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} strokeLinecap="round" />
+    <circle cx="46" cy="14" r={active ? 6 : 5} fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} />
+    <path d="M24 35V18c0-5 4-9 9-9h3" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} strokeLinecap="round" />
+    <path d="M16 35V23" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} strokeLinecap="round" />
+  </svg>
+);
+
+const InternationalIcon = ({ active = false }) => (
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+    <circle cx="32" cy="32" r="23" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} />
+    <path d="M10 32h44M32 9c7 7 10 15 10 23s-3 16-10 23M32 9c-7 7-10 15-10 23s3 16 10 23" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} strokeLinecap="round" />
+    <path d="M19 18c7 4 18 4 26 0M19 46c7-4 18-4 26 0" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} strokeLinecap="round" />
+  </svg>
+);
+
+const FamilyIcon = ({ active = false }) => (
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+    <circle cx="21" cy="22" r="7" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} />
+    <circle cx="43" cy="22" r="7" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} />
+    <circle cx="32" cy="16" r="8" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} />
+    <path d="M11 52V41c0-7 5-12 12-12M53 52V41c0-7-5-12-12-12M22 52V39c0-7 4-12 10-12s10 5 10 12v13" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} strokeLinecap="round" />
+  </svg>
+);
+
+const MountainsIcon = ({ active = false }) => (
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+    <circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" strokeWidth={active ? 4 : 3} />
+    <path d="M10 45 24 26l10 13 8-10 12 16H10Z" fill={active ? "currentColor" : "none"} stroke="currentColor" strokeWidth={active ? 4 : 3} strokeLinejoin="round" />
+    <path d="M24 26 29 34M42 29l-5 7" fill="none" stroke={active ? "#fff" : "currentColor"} strokeWidth="2.5" strokeLinecap="round" />
+  </svg>
+);
+
+const categories = [
+  {
+    id: "beach",
+    label: "Beach",
+    icon: <BeachIcon />,
+    activeIcon: <BeachIcon active />,
+  },
+  {
+    id: "pools",
+    label: "Pools",
+    icon: <PoolsIcon />,
+    activeIcon: <PoolsIcon active />,
+  },
+  {
+    id: "international",
+    label: "International",
+    icon: <InternationalIcon />,
+    activeIcon: <InternationalIcon active />,
+  },
+  {
+    id: "family",
+    label: "Family friendly",
+    icon: <FamilyIcon />,
+    activeIcon: <FamilyIcon active />,
+  },
+  {
+    id: "mountains",
+    label: "Mountains",
+    icon: <MountainsIcon />,
+    activeIcon: <MountainsIcon active />,
+  },
+];
+
 const Place = () => {
   // Состояние для хранения ID выбранной категории (по умолчанию 'beach')
   const [activeCategory, setActiveCategory] = useState('beach');
@@ -125,7 +212,10 @@ const Place = () => {
             className={`tab-btn ${activeCategory === cat.id ? 'active' : ''}`}
             onClick={() => setActiveCategory(cat.id)}
           >
-            <span className="tab-icon">{cat.icon}</span>
+            <span className="tab-icon">
+              {activeCategory === cat.id ? cat.activeIcon : cat.icon}
+            </span>
+            <span className="tab-label">{cat.label}</span>
           </button>
         ))}
       </div>

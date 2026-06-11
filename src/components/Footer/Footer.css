@@ -1,0 +1,135 @@
+.Footer {
+  background-color: #C7D2FF;
+  padding: 48px 64px 28px;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.footer-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 36px;
+}
+
+/* LEFT */
+.footer-left {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  margin-bottom: 20px;
+}
+
+.footer-logo svg {
+  width: 180px;
+  height: auto;
+}
+
+.footer-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #000;
+  margin: 0 0 18px;
+  text-align: left;
+  width: 100%;
+}
+
+.footer-app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #000;
+  background: #fff;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+
+.footer-app-btn:hover {
+  background: #205BE3;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+/* CENTER */
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  padding-top: 44px;
+}
+
+.footer-contact {
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* RIGHT */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.footer-nav a {
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+  color: #205BE3;
+}
+
+.footer-signin-btn {
+  border: 1px solid #000;
+  border-radius: 20px;
+  padding: 7px 22px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+.footer-signin-btn:hover {
+  background: #205BE3;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 13px;
+  color: #000;
+}

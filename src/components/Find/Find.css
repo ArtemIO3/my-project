@@ -1,20 +1,66 @@
 .Find {
-  display: flex;
-  justify-content: center;
-  padding: 50px;
+  display: block;
+  height: 450px;
   background: #92ABFF;
   font-family: system-ui, -apple-system, sans-serif;
+  position: relative;
+  overflow: visible;
+  z-index: 20;
+}
+
+.backgroundSlides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.backgroundSlide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 1200ms cubic-bezier(0.25, 1, 0.5, 1),
+    transform 1200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: opacity, transform;
+}
+
+.backgroundSlide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 50;
 }
 
 .popup {
   position: absolute;
-  top: 120px;
-  left: 47%;
-  transform: translateX(-50%);
+  top: 190px;
   background: white;
   border-radius: 25px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
-  z-index: 100;
+  z-index: 10000;
+}
+
+.calendarPopup {
+  left: 47%;
+  transform: translateX(-50%);
+}
+
+.guestsPopup {
+  left: 68%;
+  transform: translateX(-50%);
 }
 .guests-popup {
   background: #ffffff;
@@ -25,13 +71,16 @@
   box-sizing: border-box;
 }
 .searchBar {
-  display: flex;
-  align-items: center;
+  position: absolute;
+  top: 100px;
+  left: 206px;
+  z-index: 2;
+  display: block;
   background: white;
   border-radius: 100px;
-  padding: 6px; 
-  width: 100%;
-  max-width: 850px;
+  padding: 0;
+  width: 1519px;
+  height: 74px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 }
@@ -63,14 +112,20 @@
 .rightContainer {
   display: flex;
   align-items: center;
-  background: #F6F3EE; 
+  background: transparent;
   border-radius: 100px;
   padding: 4px 4px 4px 16px;
-  flex: 1.8; 
+  flex: 1.8;
+  transition: background-color 0.2s ease;
+}
+
+.rightContainer:hover {
+  background-color: #F6F3EE;
 }
 
 
 .searchItem {
+  position: absolute;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -78,13 +133,64 @@
   border-radius: 100px; 
   background: transparent;
   cursor: pointer;
-  flex: 1;
   transition: background-color 0.2s ease; 
+  box-sizing: border-box;
+}
+
+.searchItem::before {
+  content: "";
+  position: absolute;
+  inset: 7px 12px;
+  border-radius: 100px;
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  z-index: 0;
+}
+
+.searchItem > * {
+  position: relative;
+  z-index: 1;
+}
+
+.whereItem {
+  top: 2px;
+  left: 0;
+  width: 475px;
+  height: 70px;
+}
+
+.whereIcon {
+  width: 20px;
+  height: 27px;
+  flex-shrink: 0;
+}
+
+.dateItem {
+  top: 0;
+  left: 516px;
+  width: 368px;
+  height: 72px;
+}
+
+.guestsItem {
+  top: 1px;
+  left: 936px;
+  width: 368px;
+  height: 72px;
 }
 
 .searchItem:hover,
 .searchItem:focus-within {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.searchItem:hover::before,
+.searchItem:focus-within::before {
   background-color: #F6F3EE;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.02);
 }
 
 .searchItem input {
@@ -142,18 +248,20 @@
 }
 
 .divider {
-  width: 1px;
-  height: 28px;
-  background: #D1D1D6;
-  flex-shrink: 0;
+  display: none;
 }
 
 .searchBtn {
-  background: #1A2EB9;
+  position: absolute;
+  top: 9px;
+  left: 1377px;
+  background: #1C28CC;
   color: white;
   border: none;
   border-radius: 100px;
-  padding: 16px 36px;
+  padding: 0;
+  width: 120px;
+  height: 56px;
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
@@ -162,7 +270,8 @@
 }
 
 .searchBtn:hover {
-  background: #111F8F;
+  background:#28458A;
+
 }
 
 .label {
@@ -175,6 +284,56 @@
 .label svg {
   width: 20px; 
   height: 20px;
+}
+
+.heroText {
+  position: absolute;
+  top: 190px;
+  left: 190px;
+  z-index: 2;
+  width: 430px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.backgroundSwitch {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.backgroundSwitch::before,
+.backgroundSwitch::after {
+  content: "";
+  position: absolute;
+  border: 2px solid #ffffff;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+}
+
+.backgroundSwitch::before {
+  inset: 9px;
+}
+
+.backgroundSwitch::after {
+  top: 7px;
+  right: 8px;
+  width: 5px;
+  height: 5px;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-35deg);
 }
 .calendarPopup {
   width: 460px;
@@ -194,24 +353,24 @@
 }
 .calendarHeader {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 10px;
+  padding-top: 15px;
+}
+
+.calendarHeader h2 {
+  margin: 0;
 }
 
 .calendarHeader button {
   border: none;
-  padding: 8px 12px;
+  padding: 0;
   cursor: pointer;
   background-color: transparent;
-}
-
-.calendarHeader button svg {
-  stroke: #000; /* или fill */
-  transition: stroke 0.2s ease;
-}
-
-.calendarHeader button:hover svg {
-  stroke: #4F46E5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .weekdays,
 .calendarGrid {
@@ -228,11 +387,12 @@
 
 .day {
   height: 40px;
+  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 50%;
   transition: 0.3s;
   background: #FFFFFF;
 }
@@ -320,8 +480,8 @@
 }
 
 .counter-btn:disabled {
-  border-color: #ebebeb;
-  color: #ebebeb;
+  border-color: #b0b0b0;
+  color: #717171;
   cursor: not-allowed;
 }
 

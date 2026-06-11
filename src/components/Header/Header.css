@@ -1,0 +1,172 @@
+.Header {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.375rem 8.125rem 2rem;
+  position: sticky;
+  top: 0;
+}
+
+#logo {
+  width: 15.125rem;
+}
+
+.Header .wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.3125rem;
+}
+
+.Header.hide {
+  display: none;
+}
+
+#countrySelect {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  position: relative;
+
+}
+
+.countryDropdown {
+  background-color: #ffffff;
+  z-index: -1;
+  position: absolute;
+  box-shadow: 0 -0.0625rem 0.25rem #0000004d;
+  padding: 2.625rem 0.3125rem 0.25rem;
+  left: -0.3125rem;
+  top: -0.25rem;
+  border-radius: 0.3125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.countryOption {
+  cursor: pointer;
+}
+
+.countryOption:hover {
+  opacity: 0.5;
+}
+
+.countryOption.selected {
+  display: none;
+}
+
+#countrySelect img {
+  height: 100%;
+}
+
+.dropdownArrow {
+  transition: 0.1s;
+}
+
+.dropdownArrow.open {
+  transform: rotate(180deg);
+}
+
+.countrySelected {
+  display: flex;
+  gap: 0.4375rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Header .navigation {
+  display: flex;
+  gap: 4.375rem;
+  align-items: center;
+}
+
+.Header nav {
+  display: flex;
+  gap: 4.375rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  align-items: center;
+}
+
+.Header nav a {
+  color: #000000;
+  cursor: pointer;
+}
+
+
+.Header nav a:hover {
+  color: var(--blue-color);
+}
+
+.appBTN {
+  border: 0.0625rem solid var(--gray-stroke);
+  border-radius: 1.25rem;
+  padding: 0.75rem 2.5rem;
+  color: #205BE3;
+  font-family: "IBM Plex Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.appBTN:hover {
+  background-color: var(--blue-color-hover);
+  border: 0.0625rem solid #00000000;
+}
+
+.Header .signInBTN {
+  border: 0.0625rem solid var(--gray-stroke);
+}
+
+.signIn {
+  position: relative;
+}
+
+.signInDropdown {
+  position: absolute;
+  width: 26rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 1.375rem 3.125rem;
+  margin: 1rem 0;
+  box-shadow: 0 -0.0625rem 0.25rem #0000004d;
+  border-radius: 1.25rem;
+  right: 0;
+}
+
+.signInDropdown h4 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.signInDropdown .signInBTN {
+  font-size: 1rem;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  border-color: var(--blue-color);
+  background-color: var(--blue-color);
+  color: #ffffff;
+}
+
+.signInDropdown .signInBTN:hover {
+  background-color: #28458A;
+}
+
+.signInDropdown .signInBTN.learnMore {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: var(--blue-color);
+}
+
+.signInDropdown .signInBTN.learnMore:hover {
+  background-color: var(--blue-color-hover-alt);
+  border-color: #00000000;
+  color: #ffffff;
+}

@@ -43,7 +43,9 @@
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: 1rem;
 }
 
@@ -62,11 +64,12 @@
   color: #2a2a4a;
   margin: 0;
   max-width: 260px;
+  text-align: center;
 }
 
 .hero-image {
   background: #b8956a;
-  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80');
+  background-image: url('./8.png');
   background-size: cover;
   background-position: center;
   min-height: 200px;
@@ -180,45 +183,44 @@
 .faq-title {
   font-size: 22px;
   font-weight: 500;
-  margin: 0 0 1.5rem;
+  margin-bottom: 1.5rem;
   color: #1a1a2e;
 }
 
 .faq-list {
-  border-top: 0.5px solid #e0e0e0;
+  border-top: 1px solid #e5e7eb;
 }
 
 .faq-item {
-  border-bottom: 0.5px solid #e0e0e0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .faq-trigger {
   width: 100%;
-  background: none;
+  background: transparent;
   border: none;
   padding: 18px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
   cursor: pointer;
   text-align: left;
+}
+
+.faq-question {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a2e;
+  line-height: 1.5;
 }
 
 .faq-trigger:hover .faq-question {
   color: #3b3fd8;
 }
 
-.faq-question {
-  font-size: 14px;
-  color: #1a1a2e;
-  line-height: 1.5;
-  transition: color 0.15s ease;
-}
-
 .faq-arrow {
   flex-shrink: 0;
-  color: #999;
+  color: #777;
   transition: transform 0.2s ease;
 }
 
@@ -226,35 +228,35 @@
   transform: rotate(180deg);
 }
 
+/* ── FAQ body — плавное открытие ── */
 .faq-body {
-  display: none;
-  padding: 0 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0;
+  text-align: left;
 }
-
 .faq-body.show {
-  display: block;
+  max-height: 800px;
+  padding-bottom: 18px;
 }
 
-.faq-answer {
-  font-size: 13px;
-  color: #555;
-  line-height: 1.7;
+.faq-answer-list {
   margin: 0;
-  max-width: 680px;
+  padding-left: 22px;
+  list-style: disc;
+  list-style-position: outside;
+  max-width: 760px;
 }
 
-/* ── Responsive ── */
-@media (max-width: 600px) {
-  .hero {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-image {
-    height: 180px;
-    order: -1;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-  }
+.faq-answer-list li {
+  color: #555;
+  font-size: 13px;
+  line-height: 1.75;
+  margin-bottom: 8px;
 }
+
+.faq-answer-list li:last-child {
+  margin-bottom: 0;
+}
+

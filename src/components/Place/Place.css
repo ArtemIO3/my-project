@@ -1,6 +1,6 @@
 .place-container {
   padding: 20px;
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -8,15 +8,16 @@
 .place-container h2 {
   text-align: left;
   margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-/* Стили вкладок категорий */
+/* ── Табы категорий ── */
 .categories-tabs {
   display: flex;
   align-items: flex-end;
   gap: 44px;
   margin-bottom: 30px;
-  border-bottom: none;
   padding-bottom: 0;
 }
 
@@ -28,72 +29,66 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  color: #000000;
+  color: #555;
   padding: 0;
-  min-width: 76px;
-  font-size: 28px;
+  min-width: 60px;
+  font-size: 13px;
   font-weight: 400;
-  transition: all 0.2s ease;
-  position: relative;
-  border-bottom: none;
+  transition: color 0.2s ease;
 }
 
-/* Эффект при наведении */
 .tab-btn:hover {
-  color: #0056b3;
+  color: #000080;
 }
 
-/* Активное состояние кнопки */
 .tab-btn.active {
-  color: #0056b3;
-  font-weight: 400;
-  border-bottom: none;
+  color: #000080;
+  font-weight: 600;
 }
 
-/* Контейнер для иконки внутри кнопки */
 .tab-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
 }
 
-/* Настройка SVG, чтобы он наследовал цвет шрифта родителя */
-/* Настройка SVG, чтобы он наследовал цвет шрифта родителя */
 .tab-icon svg {
-  width: 52px;
-  height: 52px;
+  width: 40px;
+  height: 40px;
   transition: transform 0.2s ease;
-  fill: none;
-  stroke: none;
+}
+
+.tab-btn:hover .tab-icon svg {
+  transform: scale(1.05);
 }
 
 .tab-label {
-  line-height: 1.1;
+  line-height: 1.2;
   white-space: nowrap;
 }
 
-
-.tab-btn:hover .tab-icon svg {
-  transform: scale(1.05); /* Легкий интерактивный эффект при наведении */
-}
-
-/* Сетка карточек */
+/* ── Сетка карточек ── */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
 }
 
-/* Стили карточки */
+/* ── Карточка ── */
 .card {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   background: #fff;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
 }
 
 .card-image-wrapper {
@@ -111,17 +106,25 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.85);
   border: none;
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 4px;
   font-size: 11px;
+  font-weight: 500;
   cursor: pointer;
+  backdrop-filter: blur(2px);
+  transition: background 0.15s;
 }
 
+.view-more-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* ── Инфо под фото ── */
 .card-info {
-  padding: 15px;
-  background: #d0daf8; 
+  padding: 12px 14px;
+  background: #d0daf8;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -129,25 +132,58 @@
 }
 
 .card-main h3 {
-  margin: 0 0 5px 0;
-  font-size: 16px;
+  margin: 0 0 3px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
 }
 
 .bedrooms {
-  margin: 0 0 10px 0;
-  font-size: 13px;
+  margin: 0 0 8px 0;
+  font-size: 12px;
   color: #555;
 }
 
 .rating-badge {
-  background: #0056b3;
+  display: inline-block;
+  background: #005BBB;
   color: white;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: 4px;
   font-size: 12px;
+  font-weight: 600;
 }
 
 .card-price {
-  font-weight: bold;
-  font-size: 18px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1a1a2e;
+  white-space: nowrap;
+}
+
+.card-price span::before {
+  content: '';
+}
+.card-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+/* ── Адаптив ── */
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .categories-tabs {
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
 }

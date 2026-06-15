@@ -9,12 +9,7 @@ import RentiqPage from './components/Rentiqpage/Rentiqpage';
 function App() {
   return (
     <div className="App">
-      {/* <Header />
-      <Find />
       <Place/>
-      <FQL/>
-      <Footer/> */}
-      <RentiqPage />
     </div>
   );
 }

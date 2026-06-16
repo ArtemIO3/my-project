@@ -1,0 +1,557 @@
+.infoPage {
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 24px 28px 48px;
+  box-sizing: border-box;
+  color: #050505;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.25;
+  background: #fff;
+  text-align: left;
+  opacity: 1;
+}
+
+.infoPage * {
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.infoPage__title {
+  margin: 0 0 28px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.infoPage__hero {
+  display: block;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center 45%;
+  border-radius: 10px;
+}
+
+.infoPage__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 24px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.infoPage__main {
+  min-width: 0;
+}
+
+.infoPage__thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.infoPage__thumb {
+  display: block;
+  width: 100%;
+  height: 86px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.infoPage__section {
+  margin-top: 34px;
+}
+
+.infoPage__section--first {
+  margin-top: 0;
+}
+
+.infoPage__heading {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.infoPage__section p {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.28;
+}
+
+.infoPage__section p + p {
+  margin-top: 12px;
+}
+
+.infoPage__locationSection {
+  margin-top: 44px;
+}
+
+.infoPage__locationGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 80px;
+  width: 100%;
+  margin: 22px 0 24px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.infoPage__locationGrid div::before {
+  content: "•";
+  margin-right: 6px;
+}
+
+.infoPage__map {
+  width: 100%;
+  height: 210px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.infoPage__map img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 1. Заставляем сайдбар растягиваться на всю высоту левой части */
+.infoPage__sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+  align-self: stretch; /* ИСПРАВЛЕНО: игнорирует align-items: start родителя и тянется вниз */
+}
+
+/* 2. Даем главной карточке бронирования приоритет в растяжении */
+.infoPage__bookingCard {
+  flex: 2; /* ИСПРАВЛЕНО: карточка займет больше всего свободного места по высоте */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Добавлено: красиво распределит элементы внутри (цену, кнопки, хоста) */
+  min-height: 380px;
+  padding: 24px 34px;
+  border-radius: 10px;
+  background: #c9caf5;
+}
+
+/* 3. Дополнительно настраиваем внутренности карточки, чтобы элементы не улетали */
+.infoPage__bookingCard > * {
+  flex-shrink: 0; /* Гарантирует, что инпуты и кнопки не сожмутся */
+}
+
+/* 4. Позволяем карточкам Overview и Policy тоже мягко увеличиваться, если высоты очень много */
+.infoPage__overviewCard,
+.infoPage__policyCard {
+  flex: 1;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+  min-height: 132px;
+  padding: 24px 22px;
+  border-radius: 9px;
+  background: #cfcfcf;
+}
+
+
+.infoPage__price {
+  margin-bottom: 36px;
+  font-size: 11px;
+}
+
+.infoPage__price strong {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.infoPage__price span {
+  margin-left: 5px;
+  color: #44444c;
+  font-size: 10px;
+}
+
+.infoPage__pill {
+  width: 90%;
+  min-height: 42px;
+  margin: 0 0 18px;
+  border-radius: 22px;
+  background: #fff;
+  color: #050505;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.infoPage__pill small {
+  display: block;
+  color: #343434;
+  font-size: 8px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.infoPage__pill--date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+}
+
+.infoPage__pill--guest {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+}
+
+.infoPage__pillText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.infoPage__fieldIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoPage__fieldIcon svg {
+  width: 22px;
+  height: 22px;
+}
+.infoPage__calendarIcon {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.infoPage__calendarIcon svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+}
+
+.infoPage__button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 0 0 18px;
+  border: 0;
+  border-radius: 22px;
+  background: #2025d5;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+
+.infoPage__total {
+  display: flex;
+  justify-content: space-between ;
+  padding-left:36px;
+  align-items: baseline;
+  padding-right:36px;
+  font-size: 12px;
+}
+
+.infoPage__total strong {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.infoPage__host {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 24px;
+}
+
+.infoPage__host img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.infoPage__host strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.infoPage__host span {
+  display: block;
+  color: #202020;
+  font-size: 10px;
+}
+
+.infoPage__overviewCard,
+.infoPage__policyCard {
+  height: 132px;
+  padding: 24px 22px;
+  border-radius: 9px;
+  background: #cfcfcf;
+}
+
+.infoPage__overviewCard h2,
+.infoPage__policyCard h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.infoPage__overviewCard dl {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+.infoPage__overviewCard div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.infoPage__overviewCard dt {
+  font-weight: 700;
+}
+
+.infoPage__overviewCard dd {
+  margin: 0;
+  text-align: right;
+}
+
+.infoPage__policyCard p {
+  width: 100%;
+  margin: 0;
+  color: #555;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+  .infoPage {
+    padding: 16px;
+  }
+
+  .infoPage__hero {
+    height: 260px;
+  }
+
+  .infoPage__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .infoPage__thumbs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .infoPage__locationGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.infoPage__bookingCard {
+  position: relative;
+  overflow: visible;
+  z-index: 5;
+}
+
+.infoPage__bookingFields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.infoPage__bookingFieldWrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.infoPage__pill {
+  width: 90%;
+  min-height: 42px;
+  margin: 0;
+  border: 0;
+  border-radius: 22px;
+  background: #fff;
+  color: #050505;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.infoPage__pill small {
+  display: block;
+  color: #777777;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.infoPage__pill--date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+}
+
+.infoPage__pill--guest {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.infoPage__fieldIcon {
+  display: inline-flex;
+  width: 22px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 22px;
+}
+
+.infoPage__fieldIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: #050505;
+}
+
+.infoPage__pillText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.infoPage__pillText > span {
+  display: block;
+  color: #050505;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.infoPage__button {
+  margin: 0 0 22px;
+}
+
+.infoPage__bookingPopup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 30;
+  transform: translateX(-50%);
+}
+
+.infoPage__bookingPopup .popup {
+  position: static;
+  top: auto;
+  left: auto;
+  transform: none;
+  z-index: 30;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.infoPage__bookingPopup .calendarPopup {
+  width: 320px;
+  min-height: 250px;
+  padding: 8px 10px 12px;
+  border-radius: 16px;
+}
+
+.infoPage__bookingPopup .calendarHeader {
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.infoPage__bookingPopup .calendarHeader h2 {
+  font-size: 15px;
+}
+
+.infoPage__bookingPopup .weekdays,
+.infoPage__bookingPopup .calendarGrid {
+  gap: 3px;
+  margin-top: 8px;
+}
+
+.infoPage__bookingPopup .weekdays div {
+  font-size: 11px;
+}
+
+.infoPage__bookingPopup .day,
+.infoPage__bookingPopup .empty {
+  width: 36px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.infoPage__bookingPopup .guests-popup {
+  width: 320px;
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.infoPage__bookingPopup .guest-row {
+  margin-bottom: 16px;
+}
+
+.infoPage__bookingPopup .title {
+  font-size: 14px;
+}
+
+.infoPage__bookingPopup .subtitle,
+.infoPage__bookingPopup .pet-info {
+  font-size: 11px;
+}
+
+.infoPage__bookingPopup .counter-group {
+  gap: 10px;
+}
+
+.infoPage__bookingPopup .counter-btn {
+  width: 30px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.infoPage__bookingPopup .pet-section {
+  margin-top: 20px;
+  padding-top: 16px;
+}
+
+.infoPage__bookingPopup .footer-section {
+  margin-top: 20px;
+}
+
+.infoPage__bookingPopup .done-btn {
+  padding: 9px 22px;
+  font-size: 13px;
+}

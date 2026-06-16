@@ -1,3 +1,4 @@
+
 .infoPage {
   width: 100%;
   max-width: 90%;
@@ -9,6 +10,7 @@
   font-size: 13px;
   line-height: 1.25;
   background: #fff;
+  font-family: "Inter", sans-serif;
   text-align: left;
   opacity: 1;
 }
@@ -94,16 +96,17 @@
 }
 
 .infoPage__locationGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 80px;
-  width: 100%;
-  margin: 22px 0 24px;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.25;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 30px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
 }
-
+.infoPage__locationGrid,
+.infoPage__locationGrid * {
+    font-weight: 500;
+}
 .infoPage__locationGrid div::before {
   content: "•";
   margin-right: 6px;
@@ -348,28 +351,7 @@ justify-content: center;
   line-height: 1.25;
 }
 
-@media (max-width: 900px) {
-  .infoPage {
-    padding: 16px;
-  }
 
-  .infoPage__hero {
-    height: 260px;
-  }
-
-  .infoPage__layout {
-    grid-template-columns: 1fr;
-  }
-
-  .infoPage__thumbs {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .infoPage__locationGrid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-}
 
 .infoPage__bookingCard {
   position: relative;
@@ -554,4 +536,143 @@ justify-content: center;
 .infoPage__bookingPopup .done-btn {
   padding: 9px 22px;
   font-size: 13px;
+}
+@media (max-width: 768px) {
+   .infoPage {
+        width: 100%;
+        max-width: 100%;
+        padding: 16px;
+        overflow-x: hidden;
+    }
+
+    .infoPage__layout {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .infoPage__left,
+    .infoPage__right,
+    .infoPage__sidebar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    iframe {
+        max-width: 100%;
+    }
+
+  .infoPage__title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  /* Главная картинка */
+  .infoPage__hero {
+    width: 100%;
+    height: 230px;
+    border-radius: 8px;
+  }
+
+  /* Колонки становятся одной */
+  .infoPage__layout {
+    display: block;
+  }
+
+  /* Только две фотографии */
+  .infoPage__thumbs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 12px 0 20px;
+  }
+
+  .infoPage__thumb {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+  }
+
+  /* Скрываем остальные фото */
+  .infoPage__thumb:nth-child(n + 3) {
+    display: none;
+  }
+
+  /* Текст */
+  .infoPage__heading {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .infoPage__section {
+    margin-top: 24px;
+  }
+
+  .infoPage__section p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+.infoPage__locationGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 24px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    line-height: 1.5;
+    align-items: start;
+    padding-top: 12px;
+}
+
+.infoPage__locationGrid div::before {
+    content: "• ";
+}
+  .infoPage__map {
+    height: 180px;
+  }
+
+  /* Сайдбар переносим вниз */
+  .infoPage__sidebar {
+    margin-top: 24px;
+  }
+
+  .infoPage__bookingCard {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .infoPage__overviewCard,
+  .infoPage__policyCard {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .infoPage__overviewCard h2,
+  .infoPage__policyCard h2 {
+    font-size: 18px;
+  }
+
+  .infoPage__overviewCard dl,
+  .infoPage__policyCard p {
+    font-size: 14px;
+  }
+
+  .infoPage__price strong {
+    font-size: 20px;
+  }
+
+.infoPage__button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: 44px;
+    margin: 0 auto;
+    font-size: 14px;
+}
 }

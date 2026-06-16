@@ -11,8 +11,9 @@ export default function InformationPage() {
     setActiveBookingMenu((activeMenu) => (activeMenu === menu ? null : menu));
   };
 
-  return (
+  return ( 
     <main className="infoPage">
+     
       <h1 className="infoPage__title">Villa in Corfu</h1>
 
       <img
